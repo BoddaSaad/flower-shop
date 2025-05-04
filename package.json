@@ -13,6 +13,7 @@
         "laravel-vite-plugin": "^1.0",
         "preline": "^3.0.1",
         "tailwindcss": "^4.0.7",
+        "vanilla-calendar-pro": "^3.0.4",
         "vite": "^6.0"
     },
     "optionalDependencies": {

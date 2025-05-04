@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="RTL">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ config('app.name') }}</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+</head>
+<body class="min-h-screen">
+    @include('components.layouts.main.header')
+    <div class="container mx-auto mb-10">
+        <a href="#" class="block rounded-2xl overflow-hidden shadow-xl">
+            <img class="w-full h-96 object-cover" src="{{ Storage::url('banners/1.png') }}">
+        </a>
+    </div>
+    <div class="container mx-auto">
+        <div data-hs-carousel='{
+    "loadingClasses": "opacity-0",
+    "isRTL": true,
+    "slidesQty": {
+        "lg": 8
+      }
+  }' class="relative" dir="rtl">
+            <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
+                <span>اختر من التشكيلات ما تحب!</span>
+                <div class="flex items-center absolute left-0 bg-white">
+                    <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none inline-flex justify-center items-center w-11.5 h-full text-gray-800 hover:bg-gray-800/10 focus:outline-hidden focus:bg-gray-800/10 cursor-pointer rounded-s-lg">
+                        <span class="text-2xl" aria-hidden="true">
+                          <svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </span>
+                        <span class="sr-only">السابق</span>
+                    </button>
+                    <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none inline-flex justify-center items-center w-11.5 h-full text-gray-800 hover:bg-gray-800/10 focus:outline-hidden focus:bg-gray-800/10 cursor-pointer rounded-e-lg">
+                        <span class="sr-only">التالي</span>
+                        <span class="text-2xl" aria-hidden="true">
+                          <svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"></path>
+                          </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="hs-carousel relative overflow-hidden w-full min-h-50 bg-white rounded-lg">
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                    @for($i=0; $i<15; $i++)
+                        <div class="hs-carousel-slide flex flex-col items-center">
+                            <a href="#" class="flex justify-center size-30 rounded-full overflow-hidden">
+                                <img class="object-cover size-full" src="https://images.pexels.com/photos/12644569/pexels-photo-12644569.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+                            </a>
+                            <a href="#" class="font-medium text-slate-700 mt-2">
+                                باقات ورد
+                            </a>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        </div>
+
+        @for($k=0; $k<4; $k++)
+        <div class="mb-10">
+            <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
+                <span>باقات الورد</span>
+                <div class="absolute left-0">
+                    <a href="#" class="border-2 border-slate-200 bg-white hover:bg-slate-200 font-bold text-lg px-5 py-2 text-slate-400 rounded-full hover:text-slate-500 transition">
+                        عرض المزيد
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-5 gap-5">
+                @for($i=0; $i<5; $i++)
+                <div class="flex flex-col gap-3 border rounded-xl p-1 shadow-lg">
+                    <a href="#">
+                        <img class="w-full h-96 object-cover rounded-lg" alt="باقة بألوان الورد الصيفية" src="https://images.pexels.com/photos/12561872/pexels-photo-12561872.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+                    </a>
+                    <a href="#">
+                        <h3 class="text-slate-700 font-bold mt-2 text-center line-clamp-1" title="باقة بألوان الورد الصيفية">
+                            باقة بألوان الورد الصيفية
+                        </h3>
+                    </a>
+                    <div class="flex flex-col items-center justify-between gap-2 px-3 mb-3">
+                        <div class="font-bold text-lg text-slate-700">
+                            <span class="flex items-center gap-2"><del class="text-base text-red-700">200</del> 150 @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-slate-700'])</span>
+                        </div>
+                        <div class="w-full">
+                            <button class="w-full border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white font-bold transition rounded-full py-2 cursor-pointer flex items-center justify-center gap-2">
+                                <x-heroicon-o-shopping-cart class="size-6" />
+                                إضافة للعربة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endfor
+            </div>
+        </div>
+        @endfor
+    </div>
+
+    @include('components.layouts.main.footer')
+</body>
+</html>
