@@ -14,6 +14,15 @@
             </a>
         </div>
         <div class="flex items-center gap-3">
+            @auth()
+                <a href="{{ route('dashboard') }}">
+                    <x-heroicon-o-user class="size-6"/>
+                </a>
+            @else
+                <a href="{{ route('login') }}">
+                    <x-heroicon-o-user class="size-6"/>
+                </a>
+            @endauth
             <button class="cursor-pointer" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#hs-vertically-centered-modal">
                 <x-heroicon-o-magnifying-glass class="size-6"/>
             </button>
