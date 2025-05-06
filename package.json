@@ -6,13 +6,16 @@
         "dev": "vite"
     },
     "dependencies": {
+        "@preline/datepicker": "^3.0.1",
         "@tailwindcss/vite": "^4.0.7",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
+        "glightbox": "^3.3.1",
         "laravel-vite-plugin": "^1.0",
+        "lodash": "^4.17.21",
         "preline": "^3.0.1",
-        "tailwindcss": "^4.0.7",
+        "tailwindcss": "^4.1.5",
         "vanilla-calendar-pro": "^3.0.4",
         "vite": "^6.0"
     },
@@ -20,5 +23,8 @@
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
         "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
         "lightningcss-linux-x64-gnu": "^1.29.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.10"
     }
 }

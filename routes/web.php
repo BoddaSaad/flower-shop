@@ -9,6 +9,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::prefix('products')->name('products.')->group(function () {
+
+    Route::get('product', function () {
+        return view('products.product');
+    })->name('product');
+});
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
