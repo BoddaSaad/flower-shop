@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -8,11 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::prefix('products')->name('products.')->group(function () {
+Route::prefix('products')->controller(ProductController::class)->name('products.')->group(function () {
 
-    Route::get('product', function () {
-        return view('products.product');
-    })->name('product');
+    Route::get('{product:slug}', 'show')->name('product');
 });
 
 Route::view('dashboard', 'dashboard')

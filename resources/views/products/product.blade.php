@@ -7,16 +7,16 @@
     "loadingClasses": "opacity-0",
     "isRTL": true
   }' class="relative h-full">
-                    <div class="hs-carousel flex flex-col md:flex-row gap-2">
+                    <div class="hs-carousel flex flex-col md:flex-row gap-2 h-full">
                         <div class="md:order-2 relative grow border overflow-hidden bg-white rounded-lg">
                             <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                                @for($i=0; $i<5; $i++)
+                                @foreach($product->getMedia() as $media)
                                     <div class="hs-carousel-slide">
-                                        <a href="https://images.pexels.com/photos/12644569/pexels-photo-12644569.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="flex justify-center size-full glightbox" data-gallery="gallery1">
-                                            <img alt="text here" class="h-full object-cover" src="https://images.pexels.com/photos/12644569/pexels-photo-12644569.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+                                        <a href="{{ $media->getFullUrl() }}" class="flex justify-center size-full glightbox" data-gallery="gallery1">
+                                            <img alt="{{ $product->name }}" class="max-h-full max-w-full object-cover" src="{{ $media->getFullUrl() }}">
                                         </a>
                                     </div>
-                                @endfor
+                                @endforeach
                             </div>
 
                             <button type="button" class="hs-carousel-prev cursor-pointer hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-11.5 h-full text-gray-800 hover:bg-gray-800/10 focus:outline-hidden focus:bg-gray-800/10 rounded-s-lg">
@@ -39,11 +39,11 @@
 
                         <div class="md:order-1 flex-none">
                             <div class="hs-carousel-pagination max-h-140 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-hidden md:overflow-y-auto">
-                                @for($i=0; $i<5; $i++)
+                                @foreach($product->getMedia() as $media)
                                     <div class="hs-carousel-pagination-item shrink-0 border border-gray-200 rounded-md overflow-hidden cursor-pointer size-20 md:size-32 hs-carousel-active:border-blue-400">
-                                        <img alt="text here" class="object-cover w-full" src="https://images.pexels.com/photos/12644569/pexels-photo-12644569.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+                                        <img alt="{{ $product->name }}" class="object-cover w-full" src="{{ $media->getFullUrl() }}">
                                     </div>
-                                @endfor
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -52,9 +52,11 @@
             </div>
             <div class="p-10 border rounded-xl flex flex-col gap-7">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-3xl font-bold">باقات ورد من القلب للقلب</h2>
+                    <h2 class="text-3xl font-bold">{{ $product->name }}</h2>
                     <div class="font-bold text-2xl">
-                        <span class="flex items-center gap-2"><del class="text-lg text-red-700">200</del> 150 @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-slate-700'])</span>
+                        <span class="flex items-center gap-2">
+                            @if($product->discount != 0) <del class="text-lg text-red-700">{{ $product->price }}</del> @endif
+                            {{ $product->final_price }} @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-slate-700'])</span>
                     </div>
                 </div>
 
@@ -131,11 +133,11 @@
                 <span>منتجات قد تعجبك</span>
             </div>
             <div class="grid grid-cols-5 gap-5">
-                @for($i=0; $i<5; $i++)
+                @foreach($randomProducts as $product)
                     <div class="hs-carousel-slide">
-                        @include('products.partials.item')
+                        @include('products.partials.item', ['product' => $product])
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
