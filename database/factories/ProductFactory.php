@@ -12,7 +12,7 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
-        $price = $this->faker->randomNumber();
+        $price = $this->faker->randomNumber(3);
         $discountType = $this->faker->randomElement(['percentage', 'fixed']);
 
         if ($discountType === 'fixed') {
