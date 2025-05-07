@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         $products = Product::factory()->count(100)->create();
 
         $products->each(function (Product $product) use ($images) {
-            $product->categories()->attach(Category::inRandomOrder(3)->value('id'));
+            $product->categories()->attach(Category::inRandomOrder()->take(3)->pluck('id'));
 
             for($i=0; $i<rand(1, 7); $i++){
                 $product->addMediaFromUrl($images[array_rand($images)])

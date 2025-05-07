@@ -35,24 +35,24 @@
             </div>
             <div class="hs-carousel relative overflow-hidden w-full min-h-50 bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                    @for($i=0; $i<15; $i++)
+                    @foreach($featuredCategories as $category)
                         <div class="hs-carousel-slide flex flex-col items-center">
                             <a href="#" class="flex justify-center size-30 rounded-full overflow-hidden">
-                                <img class="object-cover size-full" src="https://images.pexels.com/photos/12644569/pexels-photo-12644569.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load">
+                                <img class="object-cover size-full" src="{{ $category->getFirstMediaUrl() }}" alt="">
                             </a>
                             <a href="#" class="font-medium text-slate-700 mt-2">
-                                باقات ورد
+                                {{ $category->name }}
                             </a>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>
 
-        @for($k=0; $k<4; $k++)
+        @foreach($landingCategories as $category)
             <div class="mb-10">
                 <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
-                    <span>باقات الورد</span>
+                    <span>{{ $category->name }}</span>
                     <div class="absolute left-0">
                         <a href="#" class="border-2 border-slate-200 bg-white hover:bg-slate-200 font-bold text-lg px-5 py-2 text-slate-400 rounded-full hover:text-slate-500 transition">
                             عرض المزيد
@@ -60,13 +60,13 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-5 gap-5">
-                    @for($i=0; $i<5; $i++)
+                    @foreach($category->products as $product)
                         <div class="hs-carousel-slide">
-                            @include('products.partials.item')
+                            @include('products.partials.item', ['product' => $product])
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
-        @endfor
+        @endforeach
     </div>
 </x-layouts.main>
