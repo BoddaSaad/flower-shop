@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $product = $product->load('media', 'gifts');
+        $product = $product->load('media', 'gifts.media');
         $randomProducts = Product::with('media')->inRandomOrder()->limit(5)->get();
         return view('products.product', compact('product', 'randomProducts'));
     }
