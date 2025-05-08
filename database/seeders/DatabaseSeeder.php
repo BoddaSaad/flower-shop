@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Gift;
 use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -40,9 +41,14 @@ class DatabaseSeeder extends Seeder
         ];
 
         $categories->each(function (Category $category) use ($images) {
-
-
             $category->addMediaFromUrl($images[array_rand($images)])
+                ->toMediaCollection();
+        });
+
+        $gifts = Gift::factory()->count(10)->create();
+
+        $gifts->each(function (Gift $gift) use ($images) {
+            $gift->addMediaFromUrl($images[array_rand($images)])
                 ->toMediaCollection();
         });
 
@@ -50,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
         $products->each(function (Product $product) use ($images) {
             $product->categories()->attach(Category::inRandomOrder()->take(3)->pluck('id'));
+            $product->gifts()->attach(Gift::inRandomOrder()->take(3)->pluck('id'));
 
             for($i=0; $i<rand(1, 7); $i++){
                 $product->addMediaFromUrl($images[array_rand($images)])

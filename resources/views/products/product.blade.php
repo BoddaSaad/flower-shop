@@ -76,17 +76,17 @@
                     <div>
                         <label class="block text-sm font-medium mb-2">هدايا مع المنتج</label>
                         <div class="w-full overflow-y-auto whitespace-nowrap space-x-3">
-                            @for($i=0; $i<5; $i++)
+                            @foreach($product->gifts as $gift)
                                 <button class="cursor-pointer" onclick="this.querySelector('div').classList.toggle('border-slate-700'); this.querySelector('div').classList.toggle('border-2');">
                                     <div class="size-24 rounded-lg  border flex justify-center">
-                                        <img class="h-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAwrL4yipIiq_miNCXHGV-KLnZsaux9vyDbw&s" alt="text here">
+                                        <img class="h-full object-cover" src="{{ $gift->getFirstMediaUrl() }}" alt="{{ $gift->name }}">
                                     </div>
                                     <div class="flex flex-col text-sm">
-                                        <span>شوكولاتة</span>
-                                        <span class="flex items-center justify-center gap-1">+10 @include('components.layouts.riyal-icon', ['class' => 'size-3 fill-slate-900'])</span>
+                                        <span>{{ $gift->name }}</span>
+                                        <span class="flex items-center justify-center gap-1">+{{ $gift->price }} @include('components.layouts.riyal-icon', ['class' => 'size-3 fill-slate-900'])</span>
                                     </div>
                                 </button>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
                 </div>

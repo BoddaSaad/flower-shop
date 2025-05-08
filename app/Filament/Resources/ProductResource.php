@@ -26,8 +26,6 @@ class ProductResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-
-
     public static function form(Form $form): Form
     {
         return $form
@@ -65,11 +63,17 @@ class ProductResource extends Resource
                     ->label('الأقسام')
                     ->searchable(),
 
+                Select::make('gifts')
+                    ->relationship('gifts', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->label('الهدايا')
+                    ->searchable(),
+
                 SpatieMediaLibraryFileUpload::make('الصور')
                     ->reorderable()
                     ->openable()
                     ->appendFiles()
-                    ->columnSpanFull()
                     ->multiple()->panelLayout('grid'),
             ]);
     }

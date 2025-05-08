@@ -30,6 +30,11 @@ class Product extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    public function gifts(): BelongsToMany
+    {
+        return $this->belongsToMany(Gift::class);
+    }
+
     public function getFinalPriceAttribute(): float
     {
         if ($this->discount) {
