@@ -23,7 +23,9 @@ class GiftResource extends Resource
 
     protected static ?string $slug = 'gifts';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-gift';
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
