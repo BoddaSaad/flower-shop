@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
@@ -27,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict(!app()->isProduction());
         Date::use(CarbonImmutable::class);
         DB::prohibitDestructiveCommands(app()->isProduction());
+
+        $navCategories = Category::where('navbar', true)->get();
+        view()->share('navCategories', $navCategories);
     }
 }

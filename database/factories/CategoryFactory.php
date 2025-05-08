@@ -16,6 +16,7 @@ class CategoryFactory extends Factory
             'name' => $this->faker->word(),
             'featured' => $this->faker->boolean(),
             'landing' => $this->faker->boolean(),
+            'navbar' => $this->faker->boolean(),
         ];
     }
 }

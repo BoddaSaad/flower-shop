@@ -40,11 +40,9 @@
     </nav>
     <nav class="py-3 bg-slate-100">
         <ul class="flex items-center justify-center container mx-auto gap-6 font-medium">
-            <li><a href="#" class="text-slate-700">هدايا ورد</a></li>
-            <li><a href="#" class="text-slate-700">كيك هدية</a></li>
-            <li><a href="#" class="text-slate-700">عطور هدية</a></li>
-            <li><a href="#" class="text-slate-700">باقات ورد</a></li>
-            <li><a href="#" class="text-slate-700">ورد مع شوكولاتة</a></li>
+            @foreach($navCategories as $category)
+                <li><a href="{{ route('products.index', ['filter[category]' => $category->id]) }}" class="text-slate-700">{{ $category->name }}</a></li>
+            @endforeach
         </ul>
     </nav>
 </header>

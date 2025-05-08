@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->boolean('featured')->default(false);
             $table->boolean('landing')->default(false);
+            $table->boolean('navbar')->default(false);
         });
     }
 
