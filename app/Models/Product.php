@@ -34,8 +34,8 @@ class Product extends Model implements HasMedia
     {
         if ($this->discount) {
             return $this->discount_type === 'percentage'
-                ? $this->price - ($this->price * $this->discount / 100)
-                : $this->price - $this->discount;
+                ? round($this->price - ($this->price * $this->discount / 100), 2)
+                : round($this->price - $this->discount, 2);
         }
 
         return $this->price;
