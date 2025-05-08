@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::prefix('products')->controller(ProductController::class)->name('products.')->group(function () {
-
-    Route::get('{product:slug}', 'show')->name('product');
+    Route::get('/', 'index')->name('index');
+    Route::get('{product:slug}', 'show')->name('show');
 });
 
 Route::view('dashboard', 'dashboard')

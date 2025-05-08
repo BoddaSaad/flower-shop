@@ -1,8 +1,8 @@
 <div class="flex flex-col gap-3 border rounded-xl p-1 shadow-lg">
-    <a href="{{ route('products.product', $product->slug) }}">
+    <a href="{{ route('products.show', $product->slug) }}">
         <img class="w-full h-96 object-cover rounded-lg" alt="{{ $product->name }}" src="{{ $product->getFirstMediaUrl() }}">
     </a>
-    <a href="{{ route('products.product', $product->slug) }}">
+    <a href="{{ route('products.show', $product->slug) }}">
         <h3 class="text-slate-700 font-bold mt-2 text-center line-clamp-1" title="{{ $product->name }}">
             {{ $product->name }}
         </h3>
