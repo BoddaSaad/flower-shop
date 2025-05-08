@@ -9,6 +9,9 @@
     "loadingClasses": "opacity-0",
     "isRTL": true,
     "slidesQty": {
+        "xs": 2,
+        "sm": 4,
+        "md": 6,
         "lg": 8
       }
   }' class="relative" dir="rtl">
@@ -59,9 +62,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid grid-cols-5 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                     @foreach($category->products as $product)
-                        <div class="hs-carousel-slide">
+                        <div>
                             @include('products.partials.item', ['product' => $product])
                         </div>
                     @endforeach

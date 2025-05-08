@@ -1,18 +1,18 @@
 <x-layouts.main>
     <div class="container mx-auto">
-        <div class="grid grid-cols-2 gap-10">
-            <div>
+        <div class="lg:grid grid-cols-2 gap-10">
+            <div class="mb-10 lg:mb-0">
                 <!-- Slider -->
                 <div data-hs-carousel='{
     "loadingClasses": "opacity-0",
     "isRTL": true
   }' class="relative h-full">
                     <div class="hs-carousel flex flex-col md:flex-row gap-2 h-full">
-                        <div class="md:order-2 relative grow border overflow-hidden bg-white rounded-lg">
+                        <div class="md:order-2 relative grow border overflow-hidden bg-white rounded-lg min-h-100">
                             <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
                                 @foreach($product->getMedia() as $media)
                                     <div class="hs-carousel-slide">
-                                        <a href="{{ $media->getFullUrl() }}" class="flex justify-center size-full glightbox" data-gallery="gallery1">
+                                        <a href="{{ $media->getFullUrl() }}" class="flex justify-center size-full glightbox cursor-zoom-in" data-gallery="gallery1">
                                             <img alt="{{ $product->name }}" class="max-h-full max-w-full object-cover" src="{{ $media->getFullUrl() }}">
                                         </a>
                                     </div>
@@ -132,7 +132,7 @@
             <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
                 <span>منتجات قد تعجبك</span>
             </div>
-            <div class="grid grid-cols-5 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                 @foreach($randomProducts as $product)
                     <div class="hs-carousel-slide">
                         @include('products.partials.item', ['product' => $product])

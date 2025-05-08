@@ -17,7 +17,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen mb-10 md:mb-0">
     @include('components.layouts.main.header')
     {{ $slot }}
 
