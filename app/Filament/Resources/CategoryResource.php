@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Models\Category;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -30,10 +31,12 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
+
                 TextInput::make('name')
                     ->label('الاسم')
                     ->required(),
 
+                SpatieMediaLibraryFileUpload::make('صورة')->avatar()->columnSpanFull(),
                 Group::make()->schema([
                     Toggle::make('featured')->label('مميزة'),
                     Toggle::make('landing')->label('عرض مقتطف'),
