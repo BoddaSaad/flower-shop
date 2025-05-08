@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ProductController extends Controller
@@ -12,6 +13,7 @@ class ProductController extends Controller
         $products = QueryBuilder::for(Product::class)
             ->defaultSort('-created_at')
             ->allowedSorts('created_at', 'price')
+            ->allowedFilters([AllowedFilter::exact('category', 'categories.id')])
             ->with('media')
             ->where('name', 'like', '%'.request('search').'%')
             ->paginate(20);
