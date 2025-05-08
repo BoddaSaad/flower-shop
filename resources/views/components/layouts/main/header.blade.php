@@ -44,7 +44,7 @@
 
 <div id="hs-vertically-centered-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-vertically-centered-modal-label">
     <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-56px)] flex items-center">
-        <div class="w-full flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto">
+        <form action="{{ route('products.index') }}" class="w-full flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto">
             <div class="flex justify-between items-center py-3 px-4 border-b border-gray-200">
                 <h3 id="hs-vertically-centered-modal-label" class="font-bold text-gray-800">
                     البحث
@@ -58,16 +58,16 @@
                 </button>
             </div>
             <div class="p-4 overflow-y-auto">
-                <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-slate-500 focus:ring-slate-500" placeholder="باقة ورود..." autofocus="">
+                <input name="search" type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-slate-500 focus:ring-slate-500" placeholder="باقة ورود..." autofocus="" autocomplete="off">
             </div>
             <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t border-gray-200">
                 <button type="button" class="cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-vertically-centered-modal">
                     إغلاق
                 </button>
-                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-slate-600 text-white hover:bg-slate-700 focus:outline-hidden focus:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none cursor-pointer">
+                <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-slate-600 text-white hover:bg-slate-700 focus:outline-hidden focus:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none cursor-pointer">
                     بحث
                 </button>
             </div>
-        </div>
+        </form>
     </div>
 </div>

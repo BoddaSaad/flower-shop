@@ -13,6 +13,7 @@ class ProductController extends Controller
             ->defaultSort('-created_at')
             ->allowedSorts('created_at', 'price')
             ->with('media')
+            ->where('name', 'like', '%'.request('search').'%')
             ->paginate(20);
         return view('products.products', compact('products'));
     }
