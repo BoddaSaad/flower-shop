@@ -16,11 +16,13 @@
 
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @livewireStyles
 </head>
 <body class="min-h-screen mb-10 md:mb-0">
     @include('components.layouts.main.header')
     {{ $slot }}
 
     @include('components.layouts.main.footer')
+    @livewireScripts
 </body>
 </html>
