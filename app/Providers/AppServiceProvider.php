@@ -7,6 +7,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,7 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Date::use(CarbonImmutable::class);
         DB::prohibitDestructiveCommands(app()->isProduction());
 
-        $navCategories = Category::where('navbar', true)->get();
-        view()->share('navCategories', $navCategories);
+        if (Schema::hasTable('categories')) {
+            $navCategories = Category::where('navbar', true)->get();
+            view()->share('navCategories', $navCategories);
+        }
     }
 }
