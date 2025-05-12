@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4 gap-5">
-    <div class="col-span-3 flex flex-col gap-5">
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-5">
+    <div class="xl:col-span-3 flex flex-col gap-5">
         @foreach($cartItems as $item)
             <livewire:cart.cart-item :item="$item" :key="$item->id"/>
         @endforeach
