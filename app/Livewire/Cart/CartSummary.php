@@ -21,7 +21,7 @@ class CartSummary extends Component
     #[On('cartUpdated')]
     public function loadCartItems()
     {
-        $this->cartItems = auth()->user()->cartItems()->with('product.media')->get();
+        $this->cartItems = auth()->user()->cartItems()->with(['product.media', 'gifts'])->get();
         $this->summary = $this->calculateSummary();
     }
 
@@ -51,7 +51,7 @@ class CartSummary extends Component
     {
         $subtotal = 0;
         foreach ($this->cartItems as $item) {
-            $subtotal += $item->product->price * $item->quantity;
+            $subtotal += ($item->product->price * $item->quantity) + $item->gifts->sum('price');
         }
 
         $shippingCost = 35; // TODO: Fetch from settings
