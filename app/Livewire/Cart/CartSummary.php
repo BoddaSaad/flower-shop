@@ -15,6 +15,7 @@ class CartSummary extends Component
     public function mount()
     {
         $this->loadCartItems();
+        $this->initializeValidationStatus();
     }
 
     #[On('cartUpdated')]
@@ -22,7 +23,6 @@ class CartSummary extends Component
     {
         $this->cartItems = auth()->user()->cartItems()->with('product.media')->get();
         $this->summary = $this->calculateSummary();
-        $this->initializeValidationStatus();
     }
 
     private function initializeValidationStatus()

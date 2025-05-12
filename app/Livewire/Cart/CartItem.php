@@ -53,6 +53,7 @@ class CartItem extends Component
                 'quantity' => $this->quantity,
             ]);
 
+            $this->dispatch('cartUpdated');
             $this->dispatch('popToast', ['message'=>'تم تحديث الطلب بنجاح', 'type'=>'success']);
         } catch (\Illuminate\Validation\ValidationException $e) {
             $isValid = false;
