@@ -27,9 +27,27 @@
         </div>
         <div class="hidden md:flex items-center gap-3">
             @auth()
-                <a href="{{ route('dashboard') }}">
-                    <x-heroicon-o-user class="size-6"/>
-                </a>
+                <div class="hs-dropdown relative inline-flex">
+                    <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle flex items-center cursor-pointer" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                        <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <x-heroicon-o-user class="size-6"/>
+                    </button>
+                    <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-[0px_3px_10px_rgba(0,0,0,0.15)] rounded-lg mt-2" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-header">
+                        <div class="py-3 px-4 border-b border-gray-200">
+                            <p class="text-sm text-gray-500">مرحبًا يا</p>
+                            <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                        </div>
+                        <div class="p-1 space-y-0.5">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                                    <x-heroicon-o-arrow-left-start-on-rectangle class="shrink-0 size-4 rotate-180" />
+                                    تسجيل الخروج
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             @else
                 <a href="{{ route('login') }}">
                     <x-heroicon-o-user class="size-6"/>
@@ -78,9 +96,27 @@
     </div>
     <div class="z-1 md:hidden w-full bg-white border-t shadow-[0_-5px_10px_rgba(0,0,0,0.2)] fixed bottom-0 flex justify-between items-center gap-2">
         @auth()
-            <a class="w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100" href="{{ route('dashboard') }}">
-                <x-heroicon-o-user class="size-6"/>
-            </a>
+            <div class="hs-dropdown relative inline-flex">
+                <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                    <x-heroicon-o-user class="size-6"/>
+                    <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-[0px_3px_10px_rgba(0,0,0,0.15)] rounded-lg mt-2" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-header">
+                    <div class="py-3 px-4 border-b border-gray-200">
+                        <p class="text-sm text-gray-500">مرحبًا يا</p>
+                        <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                    </div>
+                    <div class="p-1 space-y-0.5">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                                <x-heroicon-o-arrow-left-start-on-rectangle class="shrink-0 size-4 rotate-180" />
+                                تسجيل الخروج
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         @else
             <a class="w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100" href="{{ route('login') }}">
                 <x-heroicon-o-user class="size-6"/>
