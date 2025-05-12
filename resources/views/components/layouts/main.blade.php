@@ -18,7 +18,7 @@
     @vite('resources/js/app.js')
     @livewireStyles
 </head>
-<body class="min-h-screen mb-10 md:mb-0">
+<body class="min-h-screen mb-10 md:mb-0 px-3 md:px-0">
     @include('components.layouts.main.header')
     {{ $slot }}
 
