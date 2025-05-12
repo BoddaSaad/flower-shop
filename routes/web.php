@@ -14,13 +14,14 @@ Route::prefix('products')->controller(ProductController::class)->name('products.
     Route::get('{product:slug}', 'show')->name('show');
 });
 
-Route::view('cart', 'cart.cart')->name('cart');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    Route::view('cart', 'cart.cart')->name('cart');
+
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
