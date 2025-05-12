@@ -65,7 +65,7 @@ class CartSummary extends Component
 
     public function checkout()
     {
-        dd($this->validationStatus);
+        sleep(5);
     }
 
     public function render()

@@ -22,10 +22,15 @@
             @if(!$allItemsValid)
                 <span class="text-red-600">يرجى إكمال بيانات الطلبات</span>
             @endif
-            <button wire:click="checkout" class="bg-slate-800 py-3 rounded-full text-white font-bold cursor-pointer
+            <button wire:click="checkout" class="flex justify-center items-center bg-slate-800 py-3 rounded-full text-white font-bold cursor-pointer
               {{ $allItemsValid ? 'hover:bg-slate-900' : 'opacity-50 cursor-not-allowed' }} transition"
                     {{ $allItemsValid ? '' : 'disabled' }}>
-                إتمام الطلب
+                <div wire:loading class="animate-spin inline-block size-6 border-3 border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span wire:loading.remove>
+                    إتمام الطلب
+                </span>
             </button>
         </div>
     </div>
