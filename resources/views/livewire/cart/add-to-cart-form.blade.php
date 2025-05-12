@@ -13,7 +13,7 @@
         <div>
             <label for="gift-calendar" class="block text-sm font-medium mb-2">تاريخ التوصيل</label>
             @error('delivery_date') <span class="text-red-700 block mb-3 text-sm">{{ $message }}</span> @enderror
-            <input wire:model="delivery_date" readonly id="gift-calendar" class="hs-datepicker py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-600 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text">
+            <input wire:model="delivery_date" readonly id="gift-calendar" class="gift-calendar hs-datepicker py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-600 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text">
         </div>
         <div>
             <label class="block text-sm font-medium mb-2">هدايا مع المنتج (اختياري)</label>
@@ -34,7 +34,7 @@
     </div>
     <div class="flex items-center gap-2">
         <!-- Input Number -->
-        <div class="py-2 px-3 bg-white border border-gray-200 rounded-lg" id="input-number" data-hs-input-number='{
+        <div class="py-2 px-3 bg-white border border-gray-200 rounded-lg input-number" id="input-number" data-hs-input-number='{
   "min": 1
 }'>
             <div class="w-full flex justify-between items-center gap-x-5">

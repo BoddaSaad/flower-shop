@@ -9,27 +9,37 @@ const lightbox = GLightbox({});
 import 'vanilla-calendar-pro/styles/index.css';
 
 window.addEventListener('load', () => {
-    if(document.querySelector('#gift-calendar')) {
-        const calendar = new Calendar('#gift-calendar', {
-            inputMode: true,
-            positionToInput: 'auto',
-            locale: 'ar',
-            dateMin: new Date(),
-            onChangeToInput(self) {
-                if (!self.context.inputElement) return;
-                if (self.context.selectedDates[0]) {
-                    self.context.inputElement.value = self.context.selectedDates[0];
-                    self.hide();
-                } else {
-                    self.context.inputElement.value = '';
-                }
+    // Calendar
+    if(document.querySelector('.gift-calendar')) {
+        document.querySelectorAll('.gift-calendar').forEach((element, index) => {
+            let calendar = new Calendar(element, {
+                inputMode: true,
+                positionToInput: 'auto',
+                locale: 'ar',
+                dateMin: new Date(),
+                onChangeToInput(self) {
+                    if (!self.context.inputElement) return;
+                    if (self.context.selectedDates[0]) {
+                        self.context.inputElement.value = self.context.selectedDates[0];
+                        self.hide();
+                    } else {
+                        self.context.inputElement.value = '';
+                    }
 
-                Livewire.getByName('cart.add-to-cart-form')[0].$set('delivery_date', self.context.inputElement.value);
-            },
-        });
-        calendar.init();
+                    if(Livewire.getByName('cart.add-to-cart-form')[0]){
+                        Livewire.getByName('cart.add-to-cart-form')[0].$set('delivery_date', self.context.inputElement.value);
+                    }
+                    if(Livewire.getByName('cart.cart-item')[index]){
+                        Livewire.getByName('cart.cart-item')[index].$set('delivery_date', self.context.inputElement.value);
+                    }
+                },
+            });
+            calendar.init();
+        })
     }
 
+
+    // Select
     const selectSorting = HSSelect.getInstance('#select');
     if(selectSorting) {
         const urlValue = new URLSearchParams(window.location.search).get('sort');
@@ -42,11 +52,30 @@ window.addEventListener('load', () => {
         });
     }
 
-    let inputNumber = HSInputNumber.getInstance('#input-number');
-    if(inputNumber){
-        inputNumber.on('change', ({inputValue}) => {
-            Livewire.getByName('cart.add-to-cart-form')[0].$set('quantity', inputValue)
-        });
+
+    // Input Number
+    if(document.querySelector('.input-number')) {
+        document.querySelectorAll('.input-number').forEach((element, index) => {
+            let inputNumber = HSInputNumber.getInstance(element);
+            if(inputNumber){
+                let debounce = (func, delay) => {
+                    let timer;
+                    return (...args) => {
+                        clearTimeout(timer);
+                        timer = setTimeout(() => func(...args), delay);
+                    };
+                };
+
+                inputNumber.on('change', debounce(({ inputValue }) => {
+                    if (Livewire.getByName('cart.add-to-cart-form')[0]) {
+                        Livewire.getByName('cart.add-to-cart-form')[0].$set('quantity', inputValue);
+                    }
+                    if (Livewire.getByName('cart.cart-item')[index]) {
+                        Livewire.getByName('cart.cart-item')[index].$set('quantity', inputValue);
+                    }
+                }, 300));
+            }
+        })
     }
 })
 

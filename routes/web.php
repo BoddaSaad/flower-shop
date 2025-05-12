@@ -14,6 +14,8 @@ Route::prefix('products')->controller(ProductController::class)->name('products.
     Route::get('{product:slug}', 'show')->name('show');
 });
 
+Route::view('cart', 'cart.cart')->name('cart');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

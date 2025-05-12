@@ -38,7 +38,7 @@
             <button class="cursor-pointer" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#hs-vertically-centered-modal">
                 <x-heroicon-o-magnifying-glass class="size-6"/>
             </button>
-            <a href="#">
+            <a href="{{ route('cart') }}">
                 <x-heroicon-o-shopping-bag class="size-6"/>
             </a>
         </div>
@@ -89,7 +89,7 @@
         <button class="w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#hs-vertically-centered-modal">
             <x-heroicon-o-magnifying-glass class="size-6"/>
         </button>
-        <a href="#" class="w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100">
+        <a href="{{ route('cart') }}" class="w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100">
             <x-heroicon-o-shopping-bag class="size-6"/>
         </a>
     </div>
