@@ -8,7 +8,7 @@
         <!-- Email Address -->
         <flux:input
             wire:model="email"
-            :label="__('Email Address')"
+            :label="__('Email address')"
             type="email"
             required
             autofocus
