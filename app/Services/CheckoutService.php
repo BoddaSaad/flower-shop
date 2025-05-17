@@ -25,7 +25,7 @@ class CheckoutService
     {
         $subtotal = 0;
         foreach ($this->items as $item) {
-            $subtotal += ($item->product->price * $item->quantity) + $item->gifts->sum('price');
+            $subtotal += ($item->product->final_price * $item->quantity) + $item->gifts->sum('price');
         }
 
         $shippingCost = 35; // TODO: Fetch from settings
@@ -49,7 +49,7 @@ class CheckoutService
             $orderItem = OrderProduct::create([
                 'order_id' => $checkoutId,
                 'product_id' => $item->product->id,
-                'unit_price_in_cents' => $item->product->price * 100,
+                'unit_price_in_cents' => $item->product->final_price * 100,
                 'quantity' => $item->quantity,
                 'message' => $item->message,
                 'receiver_number' => $item->receiver_number,

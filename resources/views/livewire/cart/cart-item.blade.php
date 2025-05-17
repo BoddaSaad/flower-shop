@@ -4,7 +4,7 @@
             <img src="{{ $item->product->getFirstMediaUrl() }}" alt="{{ $item->product->name }}" class="w-24 h-24 object-cover rounded-lg">
             <div class="flex flex-col gap-2">
                 <h3 class="text-slate-800 font-bold">{{ $item->product->name }}</h3>
-                <span class="flex items-center gap-0.5 font-semibold text-slate-500 text-sm">{{ $item->product->price }} @include('components.layouts.riyal-icon', ['class' => 'size-3 fill-slate-500'])</span>
+                <span class="flex items-center gap-0.5 font-semibold text-slate-500 text-sm">{{ $item->product->final_price }} @include('components.layouts.riyal-icon', ['class' => 'size-3 fill-slate-500'])</span>
                 @foreach($item->gifts as $gift)
                     <ul class="text-sm text-slate-700">
                         <li class="flex items-center gap-1">
@@ -40,7 +40,7 @@
         </div>
         <div class="flex items-center gap-5 col-span-2 justify-end">
             <span class="flex items-center gap-2 text-green-700 font-bold">
-                المجموع: {{ ($item->product->price * $item->quantity) + $item->gifts->sum('price') }}
+                المجموع: {{ ($item->product->final_price * $item->quantity) + $item->gifts->sum('price') }}
                 @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-green-700'])
             </span>
             <button wire:click="removeItem">

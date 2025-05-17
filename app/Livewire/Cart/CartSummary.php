@@ -53,7 +53,7 @@ class CartSummary extends Component
     {
         $subtotal = 0;
         foreach ($this->cartItems as $item) {
-            $subtotal += ($item->product->price * $item->quantity) + $item->gifts->sum('price');
+            $subtotal += ($item->product->final_price * $item->quantity) + $item->gifts->sum('price');
         }
 
         $shippingCost = 35; // TODO: Fetch from settings
