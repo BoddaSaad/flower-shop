@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WebhookController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -14,6 +16,10 @@ Route::prefix('products')->controller(ProductController::class)->name('products.
     Route::get('{product:slug}', 'show')->name('show');
 });
 
+Route::prefix('checkout')->controller(CheckoutController::class)->name('checkout.')->group(function () {
+    Route::post('webhook', 'webhook')->name('webhook');
+    Route::get('callback', 'callback')->name('callback');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

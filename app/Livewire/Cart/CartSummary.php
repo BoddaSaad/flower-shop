@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Cart;
 
+use App\Services\CheckoutService;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Paymob\Library\Paymob;
 
 class CartSummary extends Component
 {
@@ -65,7 +67,7 @@ class CartSummary extends Component
 
     public function checkout()
     {
-        sleep(5);
+        return redirect()->away( (new CheckoutService())->checkout() );
     }
 
     public function render()

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "288b06cbf244ae7e54c72ce8df7e405e",
+    "content-hash": "40222fa45b2f8efd4b0a06f78e92853f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4135,6 +4135,58 @@
                 }
             ],
             "time": "2025-03-11T14:40:46+00:00"
+        },
+        {
+            "name": "paymob/php-library",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/paymob-integrations/php-lib.git",
+                "reference": "deaef01d8380b481f46a766ba380eab28bdb9a4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/paymob-integrations%2Fphp-lib/repository/archive.zip?sha=deaef01d8380b481f46a766ba380eab28bdb9a4e",
+                "reference": "deaef01d8380b481f46a766ba380eab28bdb9a4e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Paymob.php"
+                ],
+                "psr-4": {
+                    "Paymob\\Library\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Paymob Team"
+                }
+            ],
+            "description": "Paymob PHP Library",
+            "homepage": "https://paymob.com",
+            "keywords": [
+                "api integration",
+                "e-commerce",
+                "gateway",
+                "library",
+                "payment",
+                "paymob"
+            ],
+            "support": {
+                "issues": "https://gitlab.com/paymob-integrations/php-lib/-/issues",
+                "source": "https://gitlab.com/paymob-integrations/php-lib/-/tree/1.0.4"
+            },
+            "time": "2024-11-13T12:34:10+00:00"
         },
         {
             "name": "phpoption/phpoption",
