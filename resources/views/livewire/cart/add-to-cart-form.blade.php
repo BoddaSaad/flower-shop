@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex flex-col sm:flex-row items-center gap-2">
         <!-- Input Number -->
         <div class="py-2 px-3 bg-white border border-gray-200 rounded-lg input-number" id="input-number" data-hs-input-number='{
   "min": 1

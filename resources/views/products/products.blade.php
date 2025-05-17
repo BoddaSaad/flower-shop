@@ -21,7 +21,7 @@
             </div>
             <!-- End Select -->
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-5 gap-2">
             @foreach($products as $product)
                 @include('products.partials.item', ['product' => $product])
             @endforeach

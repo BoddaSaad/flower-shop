@@ -68,11 +68,9 @@
             <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
                 <span>منتجات قد تعجبك</span>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-5 gap-2">
                 @foreach($randomProducts as $product)
-                    <div class="hs-carousel-slide">
-                        @include('products.partials.item', ['product' => $product])
-                    </div>
+                    @include('products.partials.item', ['product' => $product])
                 @endforeach
             </div>
         </div>

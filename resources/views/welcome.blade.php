@@ -54,7 +54,7 @@
 
         @foreach($landingCategories as $category)
             <div class="mb-10">
-                <div class="relative py-3 mb-2 flex items-center font-medium text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
+                <div class="relative py-3 mb-2 flex items-center font-medium text-lg sm:text-xl md:text-2xl text-slate-600 after:flex-1 after:border-t after:border-slate-200 after:ms-6">
                     <span>{{ $category->name }}</span>
                     <div class="absolute left-0">
                         <a href="{{ route('products.index', ['filter[category]' => $category->id]) }}" class="border-2 border-slate-200 bg-white hover:bg-slate-200 font-bold text-lg px-5 py-2 text-slate-400 rounded-full hover:text-slate-500 transition">
@@ -62,7 +62,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-5 gap-2">
                     @foreach($category->products as $product)
                         <div>
                             @include('products.partials.item', ['product' => $product])

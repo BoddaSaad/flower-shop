@@ -102,7 +102,7 @@
             </a>
         </div>
     </div>
-    <div class="z-1 md:hidden w-full bg-white border-t shadow-[0_-5px_10px_rgba(0,0,0,0.2)] fixed bottom-0 flex justify-between items-center gap-2">
+    <div class="z-1 md:hidden w-full bg-white border-t shadow-[0_-5px_10px_rgba(0,0,0,0.2)] fixed bottom-0 flex justify-between items-center gap-2 right-0">
         @auth()
             <div class="hs-dropdown relative inline-flex">
                 <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle w-full flex justify-center items-center p-4 rounded-full cursor-pointer hover:bg-slate-100" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
