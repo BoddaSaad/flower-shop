@@ -3,10 +3,6 @@
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\WebhookController;
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -26,7 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Route::view('cart', 'cart.cart')->name('cart');
 
     Route::view('dashboard', 'profile')->name('dashboard');
-    Route::redirect('settings', 'settings/profile');
+    Route::get('orders', function() {
+        $orders = auth()->user()->orders()->with('items.product.media', 'items.gifts')->paginate();
+
+        return view('orders', compact('orders'));
+    })->name('orders');
 });
 
 require __DIR__.'/auth.php';

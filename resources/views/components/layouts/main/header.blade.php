@@ -38,6 +38,14 @@
                             <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
                         </div>
                         <div class="p-1 space-y-0.5">
+                            <a href="{{ route('orders') }}" class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                                <x-heroicon-o-clipboard-document-list class="shrink-0 size-4 rotate-180" />
+                                الطلبات
+                            </a>
+                            <a href="{{ route('dashboard') }}" class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                                <x-heroicon-o-cog-6-tooth class="shrink-0 size-4 rotate-180" />
+                                الحساب
+                            </a>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
@@ -107,6 +115,14 @@
                         <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
                     </div>
                     <div class="p-1 space-y-0.5">
+                        <a href="{{ route('orders') }}" class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                            <x-heroicon-o-clipboard-document-list class="shrink-0 size-4 rotate-180" />
+                            الطلبات
+                        </a>
+                        <a href="{{ route('dashboard') }}" class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
+                            <x-heroicon-o-cog-6-tooth class="shrink-0 size-4 rotate-180" />
+                            الحساب
+                        </a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="cursor-pointer w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100">
