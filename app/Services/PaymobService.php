@@ -30,7 +30,7 @@ class PaymobService
             "currency"=> "EGP",
             "special_reference"=>$reference,
             "notification_url"=> $this->notificationUrl,
-            "redirection_url"=> route('checkout.callback'),
+            "redirection_url"=> route('orders'),
             "payment_methods"=> $this->methods,
             "billing_data"=>[
                 "first_name"=>$user->name,

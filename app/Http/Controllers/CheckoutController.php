@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function callback(Request $request)
-    {
-        if($request->success !== "true"){
-            return view('callback.failed');
-        }
-
-        $order = Order::where('reference', $request->merchant_order_id)->with('products')->firstOrFail();
-        return view('callback.success', compact('order'));
-    }
 
     public function webhook(Request $request)
     {

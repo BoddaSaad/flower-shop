@@ -14,7 +14,6 @@ Route::prefix('products')->controller(ProductController::class)->name('products.
 
 Route::prefix('checkout')->controller(CheckoutController::class)->name('checkout.')->group(function () {
     Route::post('webhook', 'webhook')->name('webhook');
-    Route::get('callback', 'callback')->name('callback');
 });
 
 
@@ -23,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('dashboard', 'profile')->name('dashboard');
     Route::get('orders', function() {
-        $orders = auth()->user()->orders()->with('items.product.media', 'items.gifts')->paginate();
+        $orders = auth()->user()->orders()->with('items.product.media', 'items.gifts')->latest()->paginate();
 
         return view('orders', compact('orders'));
     })->name('orders');

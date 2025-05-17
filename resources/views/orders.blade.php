@@ -48,5 +48,9 @@
                 <h3 class="text-slate-400 font-semibold text-xl">لا توجد طلبات سابقة</h3>
             </div>
         @endforelse
+
+        <div class="mt-5">
+            {{ $orders->links() }}
+        </div>
     </div>
 </x-layouts.main>
