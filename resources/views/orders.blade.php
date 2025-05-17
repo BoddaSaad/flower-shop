@@ -6,18 +6,18 @@
 
         @forelse($orders as $order)
             <div class="mt-5 p-10 rounded-xl border">
-                <div class="flex justify-between border-b mb-4 pb-3">
+                <div class="flex flex-col md:flex-row justify-between border-b mb-4 pb-3">
                     <div class="flex gap-5">
                         <span class="text-slate-700">رقم الطلب: {{ $order->reference }}</span>
                         <span class="text-slate-700">حالة الطلب: {{ ucfirst($order->status) }}</span>
                     </div>
                     <div class="flex gap-5">
                         <span class="text-slate-700">تاريخ الطلب: {{ $order->created_at->translatedFormat('d M Y') }}</span>
-                        <span class="text-slate-700">إجمالي الطلب: {{ $order->amount_in_cents / 100 }}</span>
+                        <span class="text-slate-700">إجمالي الطلب: {{ $order->amount_in_cents / 100 }} ريال</span>
                     </div>
                 </div>
                 @foreach($order->items as $item)
-                    <div class="flex items-start justify-between my-3 gap-5">
+                    <div class="flex flex-col md:flex-row items-start justify-between my-3 gap-5 border-b pb-3 md:pb-0 md:border-b-0">
                         <div class="flex items-start gap-5">
                             <img src="{{ $item->product->getFirstMediaUrl() }}" alt="{{ $item->product->name }}" class="w-24 h-24 object-cover rounded-lg">
                             <div>
