@@ -30,5 +30,26 @@
     "Please verify your email address by clicking on the link we just emailed to you.": "يرجى التحقق من عنوان بريدك الإلكتروني من خلال النقر على الرابط الذي أرسلناه إليك.",
     "A new verification link has been sent to the email address you provided during registration.": "تم إرسال رابط تحقق جديد إلى عنوان البريد الإلكتروني الذي قدمته أثناء التسجيل.",
     "Resend verification email": "إعادة إرسال بريد التحقق",
-    "Log out": "تسجيل الخروج"
+    "Log out": "تسجيل الخروج",
+
+    "Profile": "الملف الشخصي",
+    "Profile Information": "معلومات الملف الشخصي",
+    "Update your account's profile information and email address.": "قم بتحديث معلومات ملفك الشخصي وعنوان بريدك الإلكتروني.",
+    "Name": "الاسم",
+    "Email": "البريد الإلكتروني",
+    "Your email address is unverified.": "عنوان بريدك الإلكتروني غير موثق.",
+    "Click here to re-send the verification email.": "انقر هنا لإعادة إرسال بريد التحقق.",
+    "A new verification link has been sent to your email address.": "تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.",
+    "Save": "حفظ",
+    "Saved.": "تم الحفظ.",
+    "Update Password": "تحديث كلمة المرور",
+    "Ensure your account is using a long, random password to stay secure.": "تأكد من أن حسابك يستخدم كلمة مرور طويلة وعشوائية للبقاء آمنًا.",
+    "Current Password": "كلمة المرور الحالية",
+    "New Password": "كلمة مرور جديدة",
+    "Confirm Password": "تأكيد كلمة المرور",
+    "Delete Account": "حذف الحساب",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "بمجرد حذف حسابك، سيتم حذف جميع موارده وبياناته بشكل دائم. يرجى إدخال كلمة المرور الخاصة بك لتأكيد أنك ترغب في حذف حسابك بشكل دائم.",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "بمجرد حذف حسابك، سيتم حذف جميع موارده وبياناته بشكل دائم. قبل حذف حسابك، يرجى تنزيل أي بيانات أو معلومات ترغب في الاحتفاظ بها.",
+    "Are you sure you want to delete your account?": "هل أنت متأكد أنك تريد حذف حسابك؟",
+    "Cancel": "إلغاء"
 }
