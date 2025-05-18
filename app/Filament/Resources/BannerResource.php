@@ -52,7 +52,7 @@ class BannerResource extends Resource
 
                 TextColumn::make('url')
                     ->label('الرابط')
-                    ->url(fn ($record): string => $record->url, true)
+                    ->url(fn ($record): string => $record->url ?? "#", true)
                     ->searchable()
                     ->sortable(),
             ])
