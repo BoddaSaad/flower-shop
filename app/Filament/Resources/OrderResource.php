@@ -238,4 +238,9 @@ class OrderResource extends Resource
 
         return (string) $modelClass::where('status', 'confirmed')->where('shipping_status', 'pending')->count();
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
 }

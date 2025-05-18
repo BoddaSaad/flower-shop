@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -44,5 +45,14 @@ class Product extends Model implements HasMedia
         }
 
         return $this->price;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('hasQuantity', function (Builder $builder) {
+            $builder->where('quantity', '>', 0);
+        });
     }
 }

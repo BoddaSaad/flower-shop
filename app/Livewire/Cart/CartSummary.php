@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Services\CartService;
 use App\Services\CheckoutService;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -92,7 +93,11 @@ class CartSummary extends Component
 
     public function checkout()
     {
-        return redirect()->away( (new CheckoutService())->checkout() );
+        if(Auth::check()){
+            return redirect()->away( (new CheckoutService())->checkout() );
+        }
+
+        return redirect()->route('login');
     }
 
     public function render()

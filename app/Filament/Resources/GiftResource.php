@@ -16,6 +16,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class GiftResource extends Resource
 {
@@ -96,5 +97,10 @@ class GiftResource extends Resource
     public static function getNavigationLabel(): string
     {
         return 'الهدايا';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 }

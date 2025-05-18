@@ -17,6 +17,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
@@ -92,5 +93,10 @@ class CategoryResource extends Resource
     public static function getNavigationLabel(): string
     {
         return 'الأقسام';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 }

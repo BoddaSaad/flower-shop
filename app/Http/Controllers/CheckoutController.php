@@ -18,6 +18,11 @@ class CheckoutController extends Controller
 
             if ($data['success'] === true) {
                 $checkout->update(['status' => "confirmed"]);
+                $checkout->items->each(function ($item) {
+                    $item->product->decrement('quantity', $item->quantity);
+                    $item->gifts()->decrement('quantity');
+                });
+
                 $checkout->user->cartItems()->delete();
             } else {
                 $checkout->update(['status' => "cancelled"]);
