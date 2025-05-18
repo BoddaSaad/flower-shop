@@ -17,6 +17,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class GiftResource extends Resource
 {
@@ -102,5 +103,18 @@ class GiftResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        /** @var class-string<Model> $modelClass */
+        $modelClass = static::$model;
+
+        return (string) $modelClass::where('quantity', '<', 10)->count();
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'danger';
     }
 }
