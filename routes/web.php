@@ -22,6 +22,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('dashboard', 'profile')->name('dashboard');
     Route::get('orders', function() {
+        if(request('success') === "true") {
+            (new \App\Services\CartService())->clear();
+        }
+
         $orders = auth()->user()->orders()->with('items.product.media', 'items.gifts')->latest()->paginate();
 
         return view('orders', compact('orders'));

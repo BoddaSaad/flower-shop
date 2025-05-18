@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Gift;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Illuminate\Support\Collection;
 
 class CheckoutService
@@ -15,8 +17,24 @@ class CheckoutService
     private $publicKey;
 
     public function __construct() {
-        $this->items = auth()->user()->cartItems()->with(['product', 'gifts'])->get();
-        $this->total_price_cents = $this->calculateSummary();
+        $cart = (new CartService())->getCart();
+        $productIds = array_column($cart, 'product_id');
+        $giftIds = array_merge(...array_column(array_column($cart, 'attributes'), 'gifts'));
+        $gifts = Gift::whereIn('id', $giftIds)->get();
+        $products = Product::with('media')->whereIn('id', $productIds)->get();
+        $this->items = new Collection();
+
+        foreach ($cart as $item) {
+            $this->items->push((object) [
+                'id' => $item['id'],
+                'product' => $products->where('id', $item['product_id'])->first(),
+                'quantity' => $item['quantity'],
+                ...$item['attributes'],
+                'gifts' => $gifts->whereIn('id', $item['attributes']['gifts']),
+            ]);
+        }
+
+        $this->total_price_cents = $this->calculateSummary() * 100;
         $this->apiUrl = config('paymob.api_url');
         $this->publicKey = config('paymob.public_key');
     }
