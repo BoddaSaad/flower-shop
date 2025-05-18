@@ -18,8 +18,7 @@ jobs:
           php-version: 8.4
 
       - name: Install Composer Dependencies
-        #        run: composer install --optimize-autoloader --no-dev --no-progress --no-interaction --prefer-dist
-        run: composer install --no-interaction --prefer-dist
+        run: composer install --optimize-autoloader --no-dev --no-progress --no-interaction --prefer-dist
       - name: Install Node
         uses: actions/setup-node@v3
         with:
@@ -38,7 +37,7 @@ jobs:
           SOURCE: "."
           REMOTE_HOST: ${{ secrets.VPS_HOST }}
           REMOTE_USER: ${{ secrets.VPS_USER }}
-          TARGET: "/var/www/html/Ebni"
+          TARGET: "/var/www/html/flower-shop"
 
       - name: Run Remote/Artisan Commands
         uses: appleboy/ssh-action@v0.1.6
@@ -47,7 +46,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/html/Ebni
+            cd /var/www/html/flower-shop
             php artisan migrate
             php artisan optimize
             php artisan filament:optimize
