@@ -17,8 +17,8 @@ Route::prefix('checkout')->controller(CheckoutController::class)->name('checkout
 });
 
 
+Route::view('cart', 'cart.cart')->name('cart');
 Route::middleware(['auth'])->group(function () {
-    Route::view('cart', 'cart.cart')->name('cart');
 
     Route::view('dashboard', 'profile')->name('dashboard');
     Route::get('orders', function() {
