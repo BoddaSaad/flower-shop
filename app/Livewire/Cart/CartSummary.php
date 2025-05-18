@@ -4,6 +4,7 @@ namespace App\Livewire\Cart;
 
 use App\Models\Gift;
 use App\Models\Product;
+use App\Models\ShippingPrice;
 use App\Services\CartService;
 use App\Services\CheckoutService;
 use Illuminate\Support\Collection;
@@ -82,7 +83,7 @@ class CartSummary extends Component
             $subtotal += ($item->product->final_price * $item->quantity) + $item->gifts->sum('price');
         }
 
-        $shippingCost = 35; // TODO: Fetch from settings
+        $shippingCost = ShippingPrice::first()->price;
         $total = $subtotal + $shippingCost;
         return [
             'subtotal' => $subtotal,

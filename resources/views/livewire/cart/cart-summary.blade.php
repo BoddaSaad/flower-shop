@@ -13,7 +13,7 @@
                     <span class="flex items-center gap-2 font-semibold">{{ $summary['subtotal'] }} @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-slate-900'])</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-slate-600">التوصيل</span>
+                    <span class="text-slate-600">التوصيل (إلى جدة فقط)</span>
                     <span class="flex items-center gap-2 font-semibold">{{ $summary['shippingCost'] }} @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-slate-900'])</span>
                 </div>
                 <div class="flex justify-between">

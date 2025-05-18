@@ -6,6 +6,7 @@ use App\Models\Gift;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ShippingPrice;
 use Illuminate\Support\Collection;
 
 class CheckoutService
@@ -46,7 +47,7 @@ class CheckoutService
             $subtotal += ($item->product->final_price * $item->quantity) + $item->gifts->sum('price');
         }
 
-        $shippingCost = 35; // TODO: Fetch from settings
+        $shippingCost = ShippingPrice::first()->price;
         return $subtotal + $shippingCost;
     }
 
