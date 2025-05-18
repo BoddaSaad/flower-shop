@@ -18,7 +18,7 @@ class ShippingPrice extends Component implements HasForms
 
     public function mount(ShippingPriceModel $model): void
     {
-        $this->form->fill($model->first()->toArray());
+        $this->form->fill($model->first()?->toArray());
     }
 
     public function form(Form $form): Form
