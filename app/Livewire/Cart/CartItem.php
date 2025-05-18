@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Cart;
 
+use App\Services\CartService;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use App\Models\CartItem as CartItemModel;
 
 class CartItem extends Component
 {
@@ -22,13 +22,12 @@ class CartItem extends Component
 
     public $quantity = 1;
 
-    public function mount($item)
+    public function mount()
     {
-        $this->item = $item;
-        $this->message = $item->message;
-        $this->receiver_number = $item->receiver_number;
-        $this->delivery_date = $item->delivery_date;
-        $this->quantity = $item->quantity;
+        $this->message = $this->item->message;
+        $this->receiver_number = $this->item->receiver_number;
+        $this->delivery_date = $this->item->delivery_date;
+        $this->quantity = $this->item->quantity;
 
         if($this->message && $this->receiver_number && $this->delivery_date){
             $this->dispatch('cartItemValidated', [
@@ -38,7 +37,7 @@ class CartItem extends Component
         }
     }
 
-    public function updated()
+    public function updated(CartService $cartService)
     {
         $isValid = false;
 
@@ -46,12 +45,11 @@ class CartItem extends Component
             $this->validate();
             $isValid = true;
 
-            $this->item->update([
+            $cartService->update($this->item->id, [
                 'message' => $this->message,
                 'receiver_number' => $this->receiver_number,
                 'delivery_date' => $this->delivery_date,
-                'quantity' => $this->quantity,
-            ]);
+            ], $this->quantity);
 
             $this->dispatch('cartUpdated');
             $this->dispatch('popToast', ['message'=>'تم تحديث الطلب بنجاح', 'type'=>'success']);
@@ -65,9 +63,9 @@ class CartItem extends Component
         ]);
     }
 
-    public function removeItem()
+    public function removeItem(CartService $cartService)
     {
-        CartItemModel::find($this->item->id)->delete();
+        $cartService->remove($this->item->id);
         $this->dispatch('cartUpdated');
         $this->dispatch('popToast', ['message'=>'تمت إزالة العنصر من العربة', 'type'=>'success']);
     }

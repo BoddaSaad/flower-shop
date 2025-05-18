@@ -2,26 +2,17 @@
 
 namespace App\Livewire\Cart;
 
-use App\Models\CartItem;
-use Illuminate\Support\Facades\Auth;
+use App\Services\CartService;
 use Livewire\Component;
 
 class AddToCartButton extends Component
 {
     public $productId;
 
-    public function addToCart()
+    public function addToCart(CartService $cart)
     {
-        if (Auth::check()) {
-            CartItem::create([
-                'user_id' => auth()->id(),
-                'product_id' => $this->productId,
-            ]);
-
-            $this->dispatch('popToast', ['message'=>'تمت الإضافة إلى العربة', 'type'=>'success']);
-        } else {
-            $this->dispatch('popToast', ['message'=>'يرجى تسجيل الدخول أولًا', 'type'=>'info']);
-        }
+        $cart->add($this->productId);
+        $this->dispatch('popToast', ['message'=>'تمت الإضافة إلى العربة', 'type'=>'success']);
     }
 
     public function render()

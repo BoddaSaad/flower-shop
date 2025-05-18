@@ -30,8 +30,8 @@
                         <span class="sr-only">Loading...</span>
                     </div>
                     <span wire:loading.remove>
-                    إتمام الطلب
-                </span>
+                        إتمام الطلب
+                    </span>
                 </button>
             </div>
         </div>

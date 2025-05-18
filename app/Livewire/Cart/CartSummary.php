@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Cart;
 
+use App\Models\Gift;
+use App\Models\Product;
+use App\Services\CartService;
 use App\Services\CheckoutService;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Paymob\Library\Paymob;
 
 class CartSummary extends Component
 {
@@ -13,6 +16,12 @@ class CartSummary extends Component
     public $summary;
     public $validationStatus = [];
     public $allItemsValid = false;
+    protected CartService $cart;
+
+    public function boot(CartService $cart)
+    {
+        $this->cart = $cart;
+    }
 
     public function mount()
     {
@@ -23,7 +32,23 @@ class CartSummary extends Component
     #[On('cartUpdated')]
     public function loadCartItems()
     {
-        $this->cartItems = auth()->user()->cartItems()->with(['product.media', 'gifts'])->get();
+        $cart = $this->cart->getCart();
+        $productIds = array_column($cart, 'product_id');
+        $giftIds = array_merge(...array_column(array_column($cart, 'attributes'), 'gifts'));
+        $gifts = Gift::whereIn('id', $giftIds)->get();
+        $products = Product::with('media')->whereIn('id', $productIds)->get();
+        $this->cartItems = new Collection();
+
+        foreach ($cart as $item) {
+            $this->cartItems->push((object) [
+                'id' => $item['id'],
+                'product' => $products->where('id', $item['product_id'])->first(),
+                'quantity' => $item['quantity'],
+                ...$item['attributes'],
+                'gifts' => $gifts->whereIn('id', $item['attributes']['gifts']),
+            ]);
+        }
+
         $this->summary = $this->calculateSummary();
     }
 

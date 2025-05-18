@@ -2,8 +2,7 @@
 
 namespace App\Livewire\Cart;
 
-use App\Models\CartItem;
-use Illuminate\Support\Facades\Auth;
+use App\Services\CartService;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -23,26 +22,16 @@ class AddToCartForm extends Component
     public $quantity = '';
     public $gifts = [];
 
-    public function addToCart()
+    public function addToCart(CartService $cart)
     {
         $this->validate();
-
-        if (Auth::check()) {
-            $cartItem = CartItem::create([
-                'user_id' => auth()->id(),
-                'product_id' => $this->product->id,
-                'message' => $this->message,
-                'receiver_number' => $this->receiver_number,
-                'delivery_date' => $this->delivery_date,
-                'quantity' => $this->quantity,
-            ]);
-
-            $cartItem->gifts()->attach($this->gifts);
-
-            $this->dispatch('popToast', ['message'=>'تمت الإضافة إلى العربة', 'type'=>'success']);
-        } else {
-            $this->dispatch('popToast', ['message'=>'يرجى تسجيل الدخول أولًا', 'type'=>'info']);
-        }
+        $cart->add($this->product->id, (int) $this->quantity, [
+            'message' => $this->message,
+            'receiver_number' => $this->receiver_number,
+            'delivery_date' => $this->delivery_date,
+            'gifts' => $this->gifts,
+        ]);
+        $this->dispatch('popToast', ['message'=>'تمت الإضافة إلى العربة', 'type'=>'success']);
     }
 
     public function toggleGift($giftId)

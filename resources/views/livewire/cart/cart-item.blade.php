@@ -39,10 +39,6 @@
             <!-- End Input Number -->
         </div>
         <div class="flex items-center gap-5 col-span-2 justify-end">
-            <span class="flex items-center gap-2 text-green-700 font-bold">
-                المجموع: {{ ($item->product->final_price * $item->quantity) + $item->gifts->sum('price') }}
-                @include('components.layouts.riyal-icon', ['class' => 'size-4 fill-green-700'])
-            </span>
             <button wire:click="removeItem">
                 <x-heroicon-s-x-circle class="size-8 text-red-400 cursor-pointer hover:text-red-500 transition"/>
             </button>
