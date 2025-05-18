@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Category;
 
 class HomeController extends Controller
@@ -12,6 +13,7 @@ class HomeController extends Controller
         $landingCategories = Category::where('landing', true)->with(['products' => function($q) {
             $q->with('media')->latest()->take(5);
         }])->get();
-        return view('welcome', compact('featuredCategories', 'landingCategories'));
+        $banners = Banner::with('media')->get();
+        return view('welcome', compact('featuredCategories', 'landingCategories', 'banners'));
     }
 }
