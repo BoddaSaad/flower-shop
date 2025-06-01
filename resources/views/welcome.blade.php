@@ -6,12 +6,12 @@
 "isDraggable": true,
 "isRTL": true
 }' class="relative">
-        <div class="hs-carousel relative overflow-hidden w-full aspect-4/1 bg-white rounded-lg">
+        <div class="hs-carousel relative overflow-hidden w-full aspect-3/1 bg-white rounded-lg">
             <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
                 @foreach($banners as $banner)
                 <div class="hs-carousel-slide">
                     <a href="{{ $banner->url ?? "#" }}" class="block rounded-2xl overflow-hidden shadow-xl">
-                        <img class="w-full aspect-4/1 object-cover" src="{{ $banner->getFirstMediaUrl() }}" alt="{{ $banner->name }}">
+                        <img class="w-full aspect-3/1 object-cover" src="{{ $banner->getFirstMediaUrl() }}" alt="{{ $banner->name }}">
                     </a>
                 </div>
                 @endforeach
