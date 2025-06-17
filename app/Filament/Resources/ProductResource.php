@@ -142,7 +142,7 @@ class ProductResource extends Resource
         /** @var class-string<Model> $modelClass */
         $modelClass = static::$model;
 
-        return (string) $modelClass::where('quantity', '<', 10)->count();
+        return (string) $modelClass::where('quantity', '<', 10)->count() ?: null;
     }
 
     public static function getNavigationBadgeColor(): ?string
